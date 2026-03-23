@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>タスクアプリ</title>
+<style>
+body {
+    font-family: sans-serif;
+    padding: 20px;
+}
+
+input {
+    width: 70%;
+    padding: 10px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px;
+    font-size: 16px;
+}
+
+li {
+    margin-top: 10px;
+}
+</style>
+</head>
+<body>
+
+    <h1>タスク管理アプリ</h1>
+
+    <input type="text" id="taskInput" placeholder="タスクを入力">
+    <button onclick="addTask()">追加</button>
+
+    <ul id="taskList"></ul>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
