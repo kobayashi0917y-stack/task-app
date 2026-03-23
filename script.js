@@ -5,7 +5,15 @@ window.onload = function () {
     const savedTasks = localStorage.getItem("tasks");
     if (savedTasks) {
         tasks = JSON.parse(savedTasks);
-        tasks.forEach(task => addTaskToList(task));
+        // 未完了タスク
+tasks
+    .filter(task => !task.completedAt)
+    .forEach(task => addTaskToList(task));
+
+// 完了タスク
+tasks
+    .filter(task => task.completedAt)
+    .forEach(task => addTaskToList(task));;
     }
 };
 
@@ -46,6 +54,8 @@ function addTaskToList(task) {
     if (task.completedAt) {
         completed.textContent = "完了: " + task.completedAt;
         text.style.textDecoration = "line-through";
+        text.style.color = "gray"; // 
+        li.style.backgroundColor = "#f0f0f0"; //
     }
 
     // 完了ボタン
