@@ -43,6 +43,7 @@ function addTaskToList(task) {
 
     const text = document.createElement("span");
     text.textContent = task.text;
+    text.classList.add("task-text");
 
     const created = document.createElement("div");
     created.textContent = "追加: " + task.createdAt;
