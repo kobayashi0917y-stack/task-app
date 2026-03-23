@@ -1,6 +1,6 @@
 let tasks = [];
 
-// ページ読み込み時に保存データを取得
+// 初期読み込み
 window.onload = function () {
     const savedTasks = localStorage.getItem("tasks");
     if (savedTasks) {
@@ -9,21 +9,74 @@ window.onload = function () {
     }
 };
 
+// タスク追加
 function addTask() {
     const input = document.getElementById("taskInput");
     const taskText = input.value;
 
     if (taskText === "") return;
 
-    tasks.push(taskText);
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+    const newTask = {
+        text: taskText,
+        createdAt: new Date().toLocaleString(),
+        completedAt: null
+    };
 
-    addTaskToList(taskText);
+    tasks.push(newTask);
+    saveTasks();
+
+    addTaskToList(newTask);
     input.value = "";
 }
 
-function addTaskToList(taskText) {
+// 表示
+function addTaskToList(task) {
     const li = document.createElement("li");
-    li.textContent = taskText;
+
+    const text = document.createElement("span");
+    text.textContent = task.text;
+
+    const created = document.createElement("div");
+    created.textContent = "追加: " + task.createdAt;
+    created.style.fontSize = "12px";
+
+    const completed = document.createElement("div");
+    completed.style.fontSize = "12px";
+
+    if (task.completedAt) {
+        completed.textContent = "完了: " + task.completedAt;
+        text.style.textDecoration = "line-through";
+    }
+
+    // 完了ボタン
+    const completeBtn = document.createElement("button");
+    completeBtn.textContent = "✔";
+    completeBtn.onclick = function () {
+        task.completedAt = new Date().toLocaleString();
+        saveTasks();
+        location.reload();
+    };
+
+    // 削除ボタン
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "削除";
+    deleteBtn.onclick = function () {
+        tasks = tasks.filter(t => t !== task);
+        saveTasks();
+        location.reload();
+    };
+
+    li.appendChild(text);
+    li.appendChild(document.createElement("br"));
+    li.appendChild(created);
+    li.appendChild(completed);
+    li.appendChild(completeBtn);
+    li.appendChild(deleteBtn);
+
     document.getElementById("taskList").appendChild(li);
+}
+
+// 保存
+function saveTasks() {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
 }
