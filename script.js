@@ -70,6 +70,7 @@ function addTaskToList(task) {
     // 削除ボタン
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "削除";
+    deleteBtn.classList.add("delete-btn");
     deleteBtn.onclick = function () {
         tasks = tasks.filter(t => t !== task);
         saveTasks();
