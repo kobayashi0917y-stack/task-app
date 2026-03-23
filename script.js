@@ -60,7 +60,7 @@ function addTaskToList(task) {
 
     // 完了ボタン
     const completeBtn = document.createElement("button");
-    completeBtn.textContent = "✔";
+    completeBtn.textContent = "完了";
     completeBtn.onclick = function () {
         task.completedAt = new Date().toLocaleString();
         saveTasks();
