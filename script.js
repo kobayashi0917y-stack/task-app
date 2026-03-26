@@ -61,6 +61,14 @@ function addTaskToList(task) {
     text.textContent = `${task.text}（${task.priority}）`;
     text.classList.add("task-text");
 
+    if (task.priority === "高") {
+    text.classList.add("high");
+} else if (task.priority === "中") {
+    text.classList.add("medium");
+} else {
+    text.classList.add("low");
+}
+
     const created = document.createElement("div");
     created.textContent = "追加: " + task.createdAt;
     created.style.fontSize = "12px";
