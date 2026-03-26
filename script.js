@@ -50,6 +50,9 @@ tasks
     .filter(task => task.completedAt)
     .forEach(task => addTaskToList(task));
 
+//入力欄リセット
+input.value = "";
+
 }
 
 // 表示
