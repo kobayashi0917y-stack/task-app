@@ -41,6 +41,16 @@ function addTask() {
   document.getElementById("taskList").innerHTML = "";
   tasks.forEach(task => addTaskToList(task));
 
+// 未完了
+tasks
+    .filter(task => !task.completedAt)
+    .forEach(task => addTaskToList(task));
+
+// 完了
+tasks
+    .filter(task => task.completedAt)
+    .forEach(task => addTaskToList(task));
+
 }
 
 // 表示
@@ -103,5 +113,7 @@ function saveTasks() {
 function sortTasks() {
     const order = { "高": 1, "中": 2, "低": 3 };
 
-    tasks.sort((a, b) => order[a.priority] - order[b.priority]);
+    tasks.sort((a, b) => {
+        return (order[a.priority] || 4) - (order[b.priority] || 4);
+    });
 }
