@@ -27,10 +27,12 @@ function addTask() {
     const newTask = {
         text: taskText,
         createdAt: new Date().toLocaleString(),
-        completedAt: null
+        completedAt: null,
+        priority: priority
     };
 
     tasks.push(newTask);
+    sortTask();
     saveTasks();
 
     addTaskToList(newTask);
@@ -42,7 +44,7 @@ function addTaskToList(task) {
     const li = document.createElement("li");
 
     const text = document.createElement("span");
-    text.textContent = task.text;
+    text.textContent = `${task.text}（${task.priority}）`;
     text.classList.add("task-text");
 
     const created = document.createElement("div");
@@ -90,5 +92,12 @@ function addTaskToList(task) {
 
 // 保存
 function saveTasks() {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+    localStorage.setItem("tasks", JSON.stringify(tasks)) 
+}
+
+//優先順位
+function sortTasks() {
+    const order = { "高": 1, "中": 2, "低": 3 };
+
+    tasks.sort((a, b) => order[a.priority] - order[b.priority]);
 }
