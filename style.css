@@ -48,6 +48,20 @@ li {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
+.high {
+    color: red;
+    font-weight: bold;
+}
+
+.medium {
+    color: orange;
+}
+
+.low {
+    color: gray;
+}
+
+
 .task-text {
     font-size: 18px;
     font-weight: bold;
