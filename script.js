@@ -39,7 +39,6 @@ function addTask() {
 
 //一回リセットして再表示
   document.getElementById("taskList").innerHTML = "";
-  tasks.forEach(task => addTaskToList(task));
 
 // 未完了
 tasks
