@@ -35,6 +35,10 @@ function addTask() {
     sortTask();
     saveTasks();
 
+//一回リセットして再表示
+  document.getElementById("taskList").innerHTML = "";
+  tasks.forEach(task => addTaskToList(task));
+
     addTaskToList(newTask);
     input.value = "";
 }
