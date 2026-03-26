@@ -5,6 +5,7 @@ window.onload = function () {
     const savedTasks = localStorage.getItem("tasks");
     if (savedTasks) {
         tasks = JSON.parse(savedTasks);
+        sortTasks(); 
         // 未完了タスク
 tasks
     .filter(task => !task.completedAt)
@@ -21,6 +22,7 @@ tasks
 function addTask() {
     const input = document.getElementById("taskInput");
     const taskText = input.value;
+    const priority = document.getElementById("priority").value;
 
     if (taskText === "") return;
 
@@ -32,15 +34,13 @@ function addTask() {
     };
 
     tasks.push(newTask);
-    sortTask();
+    sortTasks();
     saveTasks();
 
 //一回リセットして再表示
   document.getElementById("taskList").innerHTML = "";
   tasks.forEach(task => addTaskToList(task));
 
-    addTaskToList(newTask);
-    input.value = "";
 }
 
 // 表示
