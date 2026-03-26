@@ -48,20 +48,22 @@ li {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
+.task-text {
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
 .high {
     color: red;
-    font-weight: bold;
+    background-color: #ffe5e5;
 }
 
 .medium {
     color: orange;
+    background-color: #fff3e0;
 }
 
 .low {
     color: gray;
-}
-
-.task-text {
-    font-size: 18px;
-    font-weight: bold;
+    background-color: #f5f5f5;
 }
