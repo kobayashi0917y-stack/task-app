@@ -7,14 +7,14 @@ window.onload = function () {
         tasks = JSON.parse(savedTasks);
         sortTasks(); 
         // 未完了タスク
-tasks
-    .filter(task => !task.completedAt)
-    .forEach(task => addTaskToList(task));
+　　　　tasks
+    　　　　.filter(task => !task.completedAt)
+    　　　　.forEach(task => addTaskToList(task));
 
-// 完了タスク
-tasks
-    .filter(task => task.completedAt)
-    .forEach(task => addTaskToList(task));;
+　　　　// 完了タスク
+　　　　tasks
+    　　　　.filter(task => task.completedAt)
+ 　　　　   .forEach(task => addTaskToList(task));
     }
 };
 
@@ -37,13 +37,13 @@ function addTask() {
     sortTasks();
     saveTasks();
 
-//一回リセットして再表示
-  document.getElementById("taskList").innerHTML = "";
+　　//一回リセットして再表示
+ 　 document.getElementById("taskList").innerHTML = "";
 
-// 未完了
-tasks
-    .filter(task => !task.completedAt)
-    .forEach(task => addTaskToList(task));
+　　// 未完了
+　　tasks
+   　　 .filter(task => !task.completedAt)
+   　　 .forEach(task => addTaskToList(task));
 
 // 完了
 tasks
