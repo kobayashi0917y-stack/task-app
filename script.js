@@ -116,7 +116,7 @@ function addTaskToList(task) {
 
 // 保存
 function saveTasks() {
-    localStorage.setItem("tasks", JSON.stringify(tasks)) 
+    localStorage.setItem("tasks", JSON.stringify(tasks)) ;
 }
 
 //優先順位
