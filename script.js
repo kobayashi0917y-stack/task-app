@@ -95,3 +95,4 @@ function sortTasks() {
         return (order[a.priority] || 4) - (order[b.priority] || 4);
     });
 }
+
